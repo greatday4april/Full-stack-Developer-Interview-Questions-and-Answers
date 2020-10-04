@@ -4,7 +4,6 @@
 
 - [Architecture](#architecture)
 - [Concurrency](#concurrency)
-- [General Questions](#general)
 - [WEB](#web)
 - [SQL](#sql)
 - [NoSQL](#nosql)
@@ -15,6 +14,7 @@
 - [Distributed](#distributed)
 - [Cache](#cache)
 - [Networking](#networking)
+- [General Questions](#general)
 - [Operating system](#os)
 - [Functional programming](#functional-programming)
 - [Reactive programming](#reactive-programming)
@@ -34,7 +34,6 @@
 - _Design principles_. ([_DRY_](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), [_KISS_](https://en.wikipedia.org/wiki/KISS_principle), [_separation of concerns_](https://en.wikipedia.org/wiki/Separation_of_concerns), [_single source of truth_](https://en.wikipedia.org/wiki/Single_source_of_truth),
 - [_Microservices_](https://en.wikipedia.org/wiki/Microservices) are a style of software architecture that involves delivering systems as a set of very small, granular, independent collaborating services.
   - Pros of _microservices_ (The services are easy to replace, Services can be implemented using different programming languages, databases, hardware and software environment, depending on what fits best)
-- [_MVC_]()
 - [_REST_](https://en.wikipedia.org/wiki/Representational_state_transfer) (Representational state transfer), [_RPC_](https://en.wikipedia.org/wiki/Remote_procedure_call)
 - [_Idempotent operation_](https://en.wikipedia.org/wiki/Idempotence) (The PUT and DELETE methods are referred to as idempotent, meaning that the operation will produce the same result no matter how many times it is repeated)
 - _Nullipotent operation_ (GET method is a safe method (or nullipotent), meaning that calling it produces no side-effects)
@@ -51,61 +50,13 @@
 
 #### [[⬆]](#toc) <a name='concurrency'>Concurrency:</a>
 
-- What is [_deadlock_](https://en.wikipedia.org/wiki/Deadlock), [_livelock_](https://en.wikipedia.org/wiki/Deadlock#Livelock)? (Deadlock is a situation in which two or more competing actions are each waiting for the other to finish, and thus neither ever does. A livelock is similar to a deadlock, except that the states of the processes involved in the livelock constantly change with regard to one another, none progressing.)
-- [_Deadlock avoidance_](https://www.geeksforgeeks.org/deadlock-prevention). (prevention, detection, avoidance (Mutex hierarchy), and recovery)
-- What is [_starvation_](<https://en.wikipedia.org/wiki/Starvation_(computer_science)>)? (a problem encountered in concurrent computing where a process is perpetually denied necessary resources to process its work)
-- What is [_race condition_](https://en.wikipedia.org/wiki/Race_condition)? (Behavior of software system where the output is dependent on the sequence or timing of other uncontrollable events)
-- What is [_happens-before_](https://en.wikipedia.org/wiki/Happened-before) relation?
-- What is [_thread contention_](https://stackoverflow.com/questions/1970345/what-is-thread-contention)? (Contention is simply when two threads try to access either the same resource or related resources in such a way that at least one of the contending threads runs more slowly than it would if the other thread(s) were not running). Contention occurs when multiple threads try to acquire a lock at the same time
-- What is a [_thread-safe_](https://en.wikipedia.org/wiki/Thread_safety) function? (Can be safely invoked by multiple threads at the same time)
-- [_Publish/Subscribe_](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) pattern
-- What is [_2-phase locking_](https://en.wikipedia.org/wiki/Two-phase_locking)? (Growing phase, shrinking phase. Guarantees serializablity for transactions, doesn't prevent deadlock).
-- What is the difference between _thread_ and _process_? (Threads (of the same process) run in a shared memory space, while processes run in separate memory spaces)
-- What is [_false sharing_](https://en.wikipedia.org/wiki/False_sharing), [_cache pollution_](https://en.wikipedia.org/wiki/Cache_pollution), _cache miss_, [_thread affinity_](https://en.wikipedia.org/wiki/Processor_affinity), [_ABA-problem_](https://en.wikipedia.org/wiki/ABA_problem), [_speculative execution_](https://en.wikipedia.org/wiki/Speculative_execution)?
-- What is a
-
-  - [_obstruction-free_](https://en.wikipedia.org/wiki/Non-blocking_algorithm#Obstruction-freedom) - if all other threads are paused, then any given thread will complete its operation in a bounded number of steps
-  - [_lock-free_](https://en.wikipedia.org/wiki/Non-blocking_algorithm#Lock-freedom) - if multiple threads are operating on a data structure, then after a bounded number of steps one of them will complete its operation
-  - [_wait-free_](https://en.wikipedia.org/wiki/Non-blocking_algorithm#Wait-freedom) - every thread operating on a data structure will complete its operation in a bounded number of steps, even if other threads are also operating on the data structure algorithm?
-
-- What is [_sequential consistency_](https://en.wikipedia.org/wiki/Sequential_consistency)? (The result of any execution is the same as if the operations of all the processors were executed in some sequential order, and the operations of each individual processor appear in this sequence in the order specified by its program).
-- What is a [_memory barrier_](https://en.wikipedia.org/wiki/Memory_barrier)? (A memory barrier, also known as a membar, memory fence or fence instruction, is a type of barrier instruction that causes a CPU or compiler to enforce an ordering constraint on memory operations issued before and after the barrier instruction)
-- Synchonization aids in Java
-  - CountDownLatch
-  - CyclicBarrier
-  - Phaser
-  - ReentrantLock
-  - Exchanger
-  - Semaphore
-  - LinkedTransferQueue
-- What is _data race_? (When a program contains two conflicting accesses that are not ordered by a [happens-before](https://docs.oracle.com/javase/specs/jls/se12/html/jls-17.html#jls-17.4.5) relationship, it is said to contain a data race. Two accesses to (reads of or writes to) the same variable are said to be conflicting if at least one of the accesses is a write. But see [this](https://stackoverflow.com/questions/16615140/is-volatile-read-happens-before-volatile-write/16615355#16615355))
-- Java [_memory model_](https://docs.oracle.com/javase/specs/jls/se12/html/jls-17.html#jls-17.4)
-  - A program is correctly synchronized if and only if all sequentially consistent executions are free of data races
-  - Correctly synchronized programs have sequentially consistent semantics. If a program is correctly synchronized, then all executions of the program will appear to be sequentially consistent
-  - Causality requirement for incorrectly synchronized programs: [link](https://pdfs.semanticscholar.org/c132/11697f5c803221533a07bd6db839fa60b7b8.pdf)
-- What is _monitor_ in Java? (Each object in Java is associated with a monitor, which a thread can lock or unlock)
-- What is _safe publication_?
-- What is _wait_/_notify_?
-- [_Amdahl's law_](https://en.wikipedia.org/wiki/Amdahl%27s_law)? (Speedup = 1 / (1 - p + p / n))
-- [_Dining philosophers problem_](https://en.wikipedia.org/wiki/Dining_philosophers_problem) (Resource hierarchy (first take lower-indexed fork), arbitrator, communication (dirty/clean forks)).
-- [_Produces/consumer_](https://en.wikipedia.org/wiki/Producer%E2%80%93consumer_problem) problem.
-- [_Readers/writers_](https://en.wikipedia.org/wiki/Readers%E2%80%93writers_problem) problem.
-- [_Transactional memory_](https://en.wikipedia.org/wiki/Software_transactional_memory)
-- [_Coroutine_](https://en.wikipedia.org/wiki/Coroutine)
-
-#### [[⬆]](#toc) <a name='general'>General Questions:</a>
-
-- [_Polymorphism_](<https://en.wikipedia.org/wiki/Polymorphism_(computer_science)>) (Variable of type Shape could refer to an object of type Square, Circle... Ability of a function to handle objects of many types)
-- [_Encapsulation_](<https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)>) (Packing of data and functions into a single component)
-- [_Virtual function_](https://en.wikipedia.org/wiki/Virtual_function) (Overridable function)
-- [_Virtual method table_](https://en.wikipedia.org/wiki/Virtual_method_table)
-- [_Dynamic binding_](https://en.wikipedia.org/wiki/Late_binding) (Actual method implementation invoked is determined at run time based on the class of the object, not the type of the variable or expression)
-- How does [_garbage collector_](<https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)>) work? (Mark and sweep: mark: traverse object graph starting from root objects, sweep: garbage collect unmarked objects. Optimizations: young/old generations, incremental mark and sweep)
-- [_Tail recursion_](https://en.wikipedia.org/wiki/Tail_call) (A tail call is a subroutine call performed as the final action of a procedure)
-- [_Semantic versioning_](http://semver.org)
+Cracking the Coding Interview
 
 #### [[⬆]](#toc) <a name='web'>WEB:</a>
 
+- [_MVC_](https://open.appacademy.io/learn/swe-in-person/rails/diagram-of-rails)
+- [_API_](https://open.appacademy.io/learn/swe-in-person/rails/what-is-an-api-)
+- What happens when you type in a URL in browser? [_Answer_](https://open.appacademy.io/learn/swe-in-person/career-quest/http-request-question)
 - WEB security vulnerabilities ([_XSS_](https://en.wikipedia.org/wiki/Cross-site_scripting), [_CSRF_](https://en.wikipedia.org/wiki/Cross-site_request_forgery), [_session fixation_](https://en.wikipedia.org/wiki/Session_fixation), [_SQL injection_](https://en.wikipedia.org/wiki/SQL_injection), [_man-in-the-middle_](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), [_buffer overflow_](https://en.wikipedia.org/wiki/Buffer_overflow))
 - _CSRF prevention_ (CSRF-token)
 - What is [_JSONP_](https://en.wikipedia.org/wiki/JSONP), [_CORS_](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)? (A communication technique used in JavaScript programs running in web browsers to request data from a server in a different domain, something prohibited by typical web browsers because of the same-origin policy)
@@ -222,6 +173,17 @@
 - [_Switch_](https://en.wikipedia.org/wiki/Network_switch), [_hub_](https://en.wikipedia.org/wiki/Ethernet_hub), [_router_](<https://en.wikipedia.org/wiki/Router_(computing)>)
 - [_TCP congestion_](https://en.wikipedia.org/wiki/TCP_congestion_control)
 - _TCP back-pressure_
+
+#### [[⬆]](#toc) <a name='general'>General Questions:</a>
+
+- [_Polymorphism_](<https://en.wikipedia.org/wiki/Polymorphism_(computer_science)>) (Variable of type Shape could refer to an object of type Square, Circle... Ability of a function to handle objects of many types)
+- [_Encapsulation_](<https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)>) (Packing of data and functions into a single component)
+- [_Virtual function_](https://en.wikipedia.org/wiki/Virtual_function) (Overridable function)
+- [_Virtual method table_](https://en.wikipedia.org/wiki/Virtual_method_table)
+- [_Dynamic binding_](https://en.wikipedia.org/wiki/Late_binding) (Actual method implementation invoked is determined at run time based on the class of the object, not the type of the variable or expression)
+- How does [_garbage collector_](<https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)>) work? (Mark and sweep: mark: traverse object graph starting from root objects, sweep: garbage collect unmarked objects. Optimizations: young/old generations, incremental mark and sweep)
+- [_Tail recursion_](https://en.wikipedia.org/wiki/Tail_call) (A tail call is a subroutine call performed as the final action of a procedure)
+- [_Semantic versioning_](http://semver.org)
 
 #### [[⬆]](#toc) <a name='os'>Operating system:</a>
 

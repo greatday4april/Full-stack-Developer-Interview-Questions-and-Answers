@@ -31,13 +31,21 @@
 
 #### [[⬆]](#toc) <a name='architecture'>Architecture:</a>
 
-- _Design principles_. ([_DRY_](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), [_KISS_](https://en.wikipedia.org/wiki/KISS_principle), [_separation of concerns_](https://en.wikipedia.org/wiki/Separation_of_concerns), [_single source of truth_](https://en.wikipedia.org/wiki/Single_source_of_truth),
-- [_Microservices_](https://en.wikipedia.org/wiki/Microservices) are a style of software architecture that involves delivering systems as a set of very small, granular, independent collaborating services.
-  - Pros of _microservices_ (The services are easy to replace, Services can be implemented using different programming languages, databases, hardware and software environment, depending on what fits best)
-- [_REST_](https://en.wikipedia.org/wiki/Representational_state_transfer) (Representational state transfer), [_RPC_](https://en.wikipedia.org/wiki/Remote_procedure_call)
-- [_Idempotent operation_](https://en.wikipedia.org/wiki/Idempotence) (The PUT and DELETE methods are referred to as idempotent, meaning that the operation will produce the same result no matter how many times it is repeated)
-- _Nullipotent operation_ (GET method is a safe method (or nullipotent), meaning that calling it produces no side-effects)
-- [_Naked objects_](https://en.wikipedia.org/wiki/Naked_objects), [_Restful objects_](https://en.wikipedia.org/wiki/Restful_Objects).
+- **Design principles**
+  - DRY: Do not Repeat Yourself, write reusable code
+  - KISS: Keep It Simple, Stupid
+  - Separation of Concerns: Separate program into different sections(folder / file) for different purpose
+  - Single source of truth: Structure data models so that every data is only kept at once place and any usage of that data should be by reference only.
+- **REST**(Representational state transfer) Every URI refers to a resource, and through the verbs GET, POST, PUT, DELETE, the client can operate on the resource on the server
+- **RPC** is usually used for data transmission between service and service. And usually each RPC Url corresponds to a function, instead of a resource. It's similar to calling a function remotely
+- **Microservices** are a style of software architecture that divide the system into small and independent services that collaborate with each other. (for example you have a Python program handles machine learning, but Ruby on Rails program serves as webserver, and they communicate with each other using, say RPC)
+
+  - Pros of _microservices_:
+    - The services are easy to replace;
+    - Services can be implemented using different programming languages, databases, hardware and software environment, depending on what fits best
+
+- **Idempotent operation** Idempotent means no matter how many times we run the operation, the result will be the same. PUT and DELETE http methods are idempotent for example. And say, we have an API for sending payment, then it should be made idempotent, otherwise the payment could be retried and sent multiple times.
+
 - Why do you need _web server_ (tomcat, jetty)?
 - [_Inheritance_](<https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)>) vs [_Composition_](https://en.wikipedia.org/wiki/Object_composition) (Inheritance - is-a relationship, whether clients will want to use the subclass type as a superclass type. Composition - has-a or part-of relationship).
 - [_Multiple inheritance (diamond) problem_](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)

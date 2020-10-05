@@ -32,10 +32,19 @@
 #### [[⬆]](#toc) <a name='architecture'>Architecture:</a>
 
 - **Design principles**
+
   - DRY: Do not Repeat Yourself, write reusable code
   - KISS: Keep It Simple, Stupid
   - Separation of Concerns: Separate program into different sections(folder / file) for different purpose
+
+    - Why?
+      - Easier to add new feature
+      - Easier to optimize
+      - Easier to test
+      - Fixing and debugging are easier because each piece are independent
+
   - Single source of truth: Structure data models so that every data is only kept at once place and any usage of that data should be by reference only.
+
 - **REST**(Representational state transfer) Every URI refers to a resource, and through the verbs GET, POST, PUT, DELETE, the client can operate on the resource on the server
 - **RPC** is usually used for data transmission between service and service. And usually each RPC Url corresponds to a function, instead of a resource. It's similar to calling a function remotely
 - **Microservices** are a style of software architecture that divide the system into small and independent services that collaborate with each other. (for example you have a Python program handles machine learning, but Ruby on Rails program serves as webserver, and they communicate with each other using, say RPC)
@@ -44,21 +53,36 @@
     - The services are easy to replace;
     - Services can be implemented using different programming languages, databases, hardware and software environment, depending on what fits best
 
-- **Idempotent operation** Idempotent means no matter how many times we run the operation, the result will be the same. PUT and DELETE http methods are idempotent for example. And say, we have an API for sending payment, then it should be made idempotent, otherwise the payment could be retried and sent multiple times.
+- **Idempotent operation** Idempotent means no matter how many times we run the operation, the result will be the same. PUT and DELETE http methods are idempotent for example. And say, we have an API for sending payment, then it should take a signature, otherwise the payment could be retried and sent multiple times.
 
-- Why do you need _web server_ (tomcat, jetty)?
-- [_Inheritance_](<https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)>) vs [_Composition_](https://en.wikipedia.org/wiki/Object_composition) (Inheritance - is-a relationship, whether clients will want to use the subclass type as a superclass type. Composition - has-a or part-of relationship).
-- [_Multiple inheritance (diamond) problem_](https://en.wikipedia.org/wiki/Multiple_inheritance#The_diamond_problem)
-- Advantages of using _modules_. (reuse, decoupling, namespace)
-- Drawbacks of not using [_separation of concerns_](https://en.wikipedia.org/wiki/Separation_of_concerns)
-  - Adding new features will take an order of magnitude longer
-  - Impossible to optimize
-  - Extremely difficult to test
-  - Fixing and debugging can be a nightmare (fixing something in one place can lead to something else breaking that seems completely unrelated).
+- Why do you need **Web Server**? Web server is used to serve the static files of the website, such as HTML, JavaScript and CSS so the user can load the UI for the website
+
+- **Inheritance vs Composition**
+
+  - Inheritance means some type belongs to another more generic type, for example, Apple is a fruit. It's called "is-a" relationship
+  - Composition means a class can have many parts of code, and those parts can be reused in other classes. So it's more of a "has-a" relationship. Like "Bird has the fly functionality and so does plane"
+  - Usually we prefer composition over inheritance, because the child class wont be have to tightly coupled with the parent class, and also helps separation of concerns. Most programming languages also dont support multiple inheritance, and it's very confusing when used.
+
+- Advantages of using **Modules**.
+  - Make the code reusable
+  - Decouple the code into independent pieces so different places can mix and use them
+  - Also it uses namespace so it can provide similar but different functionality under different namespace ( `ModuleA::print` vs `ModuleB::print` )
 
 #### [[⬆]](#toc) <a name='concurrency'>Concurrency:</a>
 
-Cracking the Coding Interview
+- **Pre-emptive** Scheduler switch back and forth between different sequence of instructions (threads)
+- **Scheduler** Scheduler is a software component that controls the order of threads that get into the CPU to be executed. Scheduler will manage the priority for different threads and assign it to the CPU.
+- **Thread vs Process vs Program**
+  - **Thread** is the smallest execution unit of execution
+  - **Process** is the program which is actively running, including its threads
+  - **Program** is a set of instructions, represented by code that can executed plus its data
+- **Multi-threading**
+
+```
+A CPU is giving the illusion that it's doing multiple comuptations at the same time. It does that by spending a bit of time on each computation. And thread is the execution context for each computation. So many tasks can share te same CPU. (e.g. Word will have one thread for keyboard input, one thread for rendering, another for saving files etc)
+```
+
+- **Multiprocessing vs Multithreading**
 
 #### [[⬆]](#toc) <a name='web'>WEB:</a>
 

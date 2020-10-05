@@ -1,33 +1,90 @@
-# Full-stack Developer Interview Questions and Answers
 
-## <a name='toc'>Table of Contents</a>
+## Self Intro
+Hey, my name is April. I am a full stack software engineer. Before my career transition, I used to be a commercial director and I shot videos for tech products so I was like, instead of promoting them, why not build them myself. My boyfriend works as a senior software engineer at Facebook, and sometimes I would ask him for some programming puzzles and solve them on napkins. That’s how my interest got started.
+After taking a coding bootcamp and working on a lot of smaller projects, I started building more and more real-world apps. So I worked for a startup as an intern for their mobile app Blismo which serves local businesses, and on the side I worked with 2 other engineers on a website called pointer.ai. Later on I founded my own startup so I can give some branding to the two apps I invented, built and launched. 
+Out of my four projects,  I worked with React and React Native in three of them for the frontend, and for the backend I had experience with things like Python, Ruby on Rails and some PHP as well. So I’m excited to see how much that fits the position. And also, continue being able to work on things related to small businesses.
 
-- [Architecture](#architecture)
-- [Concurrency](#concurrency)
-- [WEB](#web)
-- [SQL](#sql)
-- [NoSQL](#nosql)
-- [Transactions](#transcations)
-- [Scalability](#scalability)
-- [Load balancing](#load-balancing)
-- [Cloud computing](#cloud-computing)
-- [Distributed](#distributed)
-- [Cache](#cache)
-- [Networking](#networking)
-- [General Questions](#general)
-- [Operating system](#os)
-- [Functional programming](#functional-programming)
-- [Reactive programming](#reactive-programming)
-- [Git](#git)
-- [DevOps](#devOps)
-- [Agile, Scrum, XP](#agile)
-- [UML](#uml)
-- [Other](#other)
-- [Machine learning](#machine-learning)
-- [Big Data](#big-data)
-- [Image processing](#image-processing)
-- [Cryptography](#cryptography)
-- [Security](#security)
+## Why DRW?
+
+
+## Why this school?
+
+## Thread vs Process
+
+- **Thread** is the smallest execution unit of execution
+- **Process** is the program which is actively running, including its threads
+- **Program** is a set of instructions, represented by code that can executed plus its data
+
+
+## what is deadlock?
+Deadlock is a situation where a set of processes are blocked because each process is holding a resource and waiting for another resource acquired by some other process. ... Similar situation occurs in operating systems when there are two or more processes hold some resources and wait for resources held by other(s).
+
+## asynchronous vs synchronous
+Synchronous basically means that you can only execute one thing at a time. Asynchronous means that you can execute multiple things at a time and you don’t have to wait for the current task in order to move on to next one.
+
+## what is a race condition?
+A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any time, you don’t know the order in which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are “racing” to access/change the data.
+Problems often occur when one thread does a “check-then-act” (e.g. “check” if the value is X, then “act” to do something that depends on the value being X) and another thread does something to the value in between the “check” and the “act”. E.g:
+if (x == 5) // The “Check”
+{
+   y = x * 2; // The “Act”
+   // If another thread changed x in between “if (x == 5)” and “y = x * 2" above,
+   // y will not be equal to 10.
+}
+The point being, y could be 10, or it could be anything, depending on whether another thread changed x in between the check and act. You have no real way of knowing.
+In order to prevent race conditions from occurring, you would typically put a lock around the shared data to ensure only one thread can access the data at a time. This would mean something like this:
+// Obtain lock for x
+if (x == 5)
+{
+   y = x * 2; // Now, nothing can change x until the lock is released.
+              // Therefore y = 10
+}
+// release lock for x
+>##  favorite data strucuture and why?
+- tree
+>## how would u implement ur favorite data strucuture
+- inheritance vs composition
+>## database ACID
+ ACID is a set of properties that you would like to apply when modifying a database.
+- Atomicity
+- Consistency
+- Isolation
+- Durability
+A transaction is a set of related changes which is used to achieve some of the ACID properties. Transactions are tools to achieve the ACID properties.
+Atomicity means that you can guarantee that all of a transaction happens, or none of it does; you can do complex operations as one single unit, all or nothing, and a crash, power failure, error, or anything else won’t allow you to be in a state in which only some of the related changes have happened.
+Consistency means that you guarantee that your data will be consistent; none of the constraints you have on related data will ever be violated.
+Isolation means that one transaction cannot read data from another transaction that is not yet completed. If two transactions are executing concurrently, each one will see the world as if they were executing sequentially, and if one needs to read data that is written by another, it will have to wait until the other is finished.
+Durability means that once a transaction is complete, it is guaranteed that all of the changes have been recorded to a durable medium (such as a hard disk), and the fact that the transaction has been completed is likewise recorded.
+So, transactions are a mechanism for guaranteeing these properties; they are a way of grouping related actions together such that as a whole, a group of operations can be atomic, produce consistent results, be isolated from other operations, and be durably recorded.
+## 2019(10-12月) 码农类General 硕士 实习@DRW - 网上海投 - 技术电面  | Other | fresh grad应届毕业生
+ 来吐槽一下一个神奇的公司，DRW。 广发oa，看到地里很多小伙伴都做了。意外的收到了电面，上周四面的，没有做题，就是聊简历聊得非常非常细，确保上面每个project你都做了，然后问了非常基础的data structure和OOD。小哥很nice的给我介绍了半天他们的业务，感觉很有passion。最后说很快会有结果，问我有没有别的deadline什么的。周三的时候我发了封邮件给recruiter问问情况，今天给我回复说，这个position on hold了，如果reopen再通知我，也不知道是真的还是给我委婉拒了, move on。
+Sherlinhhh 发表于 2020/03/11 11:13:09
+请问基础的data structure 和OOD是什么呀
+> override，overload，hashmap，array和linkedlist区别?
+Method overloading deals with the notion of having two or more methods in the same class with the same name but different arguments.
+Method overriding means having two methods with the same arguments, but different implementations. One of them would exist in the parent class, while another will be in the derived, or child class. The @Override annotation, while not required, can be helpful to enforce proper overriding of a method at compile time.
+- array : An array is used to store a collection of data, but it is often more useful to think of an array as a collection of variables of the same type.
+- hashmap : HashMap is a Map based collection class that is used for storing Key & value pairs, it is denoted as HashMap<Key, Value> or HashMap<K, V>. ... It is not an ordered collection which means it does not return the keys and values in the same order in which they have been inserted into the HashMap.
+- linked list : A linked list is a common data structure made of a chain of nodes in which each node contains a value and a pointer to the next node in the chain. The head pointer points to the first node, and the last element of the list points to null.
+> Differences between Array and Vector
+- Vector is better for frequent insertion and deletion whereas Arrays are much better suited for frequent access of elements scenario. Vector occupies much more memory in exchange for the ability to manage storage and grow dynamically whereas Arrays are memory efficient data structure.
+### 2019(1-3月) 码农类General 硕士 全职@DRW - 网上海投 - 技术电面  | Fail/Rej | fresh grad应届毕业生
+以下内容需要积分高于 100 您已经可以浏览
+是 Trading System Developer的職位
+先問履歷的上的問題、過去工作經驗
+接著問OS及C++相關的問題 單純問答題
+> Heap、Stack ?
+- An abstract data type is defined by its behavior (semantics) from the point of view of a user, of the data, specifically in terms of possible values, possible operations on data of this type, and the behavior of these operations.
+時不時會問操作時間複雜度
+解釋 Hashmap如何實現
+最後寫代碼考用位運算判斷二的倍數
+麻煩同學加米 很多帖看不了 感謝！
+> hashing function is (cityhash, CRC32, Murmurhash(ruby used))
+> cryptographic: blowfish...)
+- must be deterministic
+- uniform distributed
+- one way function (highly sensetive) (no way back)
+- Disperated
 
 #### [[⬆]](#toc) <a name='architecture'>Architecture:</a>
 

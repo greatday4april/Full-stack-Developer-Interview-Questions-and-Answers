@@ -1,29 +1,49 @@
 
 ## Self Intro
-Hey, my name is April. I am a full stack software engineer. Before my career transition, I used to be a commercial director and I shot videos for tech products so I was like, instead of promoting them, why not build them myself. My boyfriend works as a senior software engineer at Facebook, and sometimes I would ask him for some programming puzzles and solve them on napkins. That’s how my interest got started.
+my name is April. I am a full stack software engineer. Before my career transition, I used to be a commercial director and I shot videos for tech products so I was like, instead of promoting them, why not build them myself. My boyfriend works as a senior software engineer at Facebook, and sometimes I would ask him for some programming puzzles and solve them on napkins. That’s how my interest got started.
 After taking a coding bootcamp and working on a lot of smaller projects, I started building more and more real-world apps. So I worked for a startup as an intern for their mobile app Blismo which serves local businesses, and on the side I worked with 2 other engineers on a website called pointer.ai. Later on I founded my own startup so I can give some branding to the two apps I invented, built and launched. 
-Out of my four projects,  I worked with React and React Native in three of them for the frontend, and for the backend I had experience with things like Python, Ruby on Rails and some PHP as well. So I’m excited to see how much that fits the position. And also, continue being able to work on things related to small businesses.
-
-## Why DRW?
 
 
 ## Why this school?
 
 ## Thread vs Process
 
-- **Thread** is the smallest execution unit of execution
+- **Thread** is the smallest execution unit of executionfor cpu. For example a program want to do different things, and c
+PU cdoesnt have to wait for one task to finish while it's asking for resource etc. so the cpu can just go on and execute the next thread. yes. 
+
+actually i once was working on the ppointer.ai project, i had to generate two optimal learning plans for the user. and this is very time costly, so i used the multiprocessing module in python to generate two paths simula . so i can save half the time. 
+
+there could be race conditions if we are accessing the same resource. at
+
 - **Process** is the program which is actively running, including its threads
 - **Program** is a set of instructions, represented by code that can executed plus its data
+
+
+i have several interviews but nothing final stage 
+
+
+
+whats; your daily schedule look like
 
 
 ## what is deadlock?
 Deadlock is a situation where a set of processes are blocked because each process is holding a resource and waiting for another resource acquired by some other process. ... Similar situation occurs in operating systems when there are two or more processes hold some resources and wait for resources held by other(s).
 
+so basically i need to remove any of these deadlock conditions / usually we focus on circular wait issues to resolve the deadlock. 
+
+basically circular wait means A waits for B, and B waits for A. I think most algorithms focus on preventing this particular issue
+
+
+maybe we can use id 
+
 ## asynchronous vs synchronous
 Synchronous basically means that you can only execute one thing at a time. Asynchronous means that you can execute multiple things at a time and you don’t have to wait for the current task in order to move on to next one.
 
 ## what is a race condition?
-A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any time, you don’t know the order in which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are “racing” to access/change the data.
+A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any time, you don’t know the order in which the threads will attempt to access the shared data. 
+
+
+Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are “racing” to access/change the data.
 Problems often occur when one thread does a “check-then-act” (e.g. “check” if the value is X, then “act” to do something that depends on the value being X) and another thread does something to the value in between the “check” and the “act”. E.g:
 if (x == 5) // The “Check”
 {
@@ -40,10 +60,19 @@ if (x == 5)
               // Therefore y = 10
 }
 // release lock for x
->##  favorite data strucuture and why?
-- tree
->## how would u implement ur favorite data strucuture
-- inheritance vs composition
+
+it can be just instance variable on the resource. for example it's a object and then i have a boolean state indicate locked
+
+i think as soon as we start updating the resource , we should change the value of that locked state. to prevent such situation. 
+maybe we can update it ahead of time, and a scheduler can put a lock even before we start accessing the locked state.
+
+##  favorite data strucuture and why?
+Tree, because it's simple enough to understand but also can be very powerful when being extended. For example, it can be used to store dictionary and support quick search
+
+## how would u implement ur favorite data strucuture
+I would have a Node class to represent that tree node, and 
+
+
 >## database ACID
  ACID is a set of properties that you would like to apply when modifying a database.
 - Atomicity
